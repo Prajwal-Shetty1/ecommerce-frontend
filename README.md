@@ -69,6 +69,7 @@ Used !important to properly override desktop CSS styles on mobile.
 Updated SearchBar.jsx to show the search bar only on the Collection page.
 Used useLocation + useEffect to control when the SearchBar should be visible.
 Made the search input fully responsive by fixing width, font size, and alignment issues.
+<<<<<<< HEAD
 
 ### 9
 Developed Product page UI using React.
