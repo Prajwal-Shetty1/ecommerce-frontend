@@ -5,7 +5,7 @@ import { ShopContext } from '../context/ShopContext';
 const NavBar = () => {
   const [showDropDown , setShowDropDown] = useState(false);
   const [showSidebar , setShowSidebar] = useState(false);
-  const { setShowSearch} = useContext(ShopContext);  //serch logo
+  const { setShowSearch , getCartCount} = useContext(ShopContext);  //serch logo
   return (
     <div className='navbar'>
   <Link to='/'><img src={assets.logo} alt="Logo" /></Link>
@@ -43,7 +43,7 @@ const NavBar = () => {
 
     <Link to="/Cart" className='nav-cart'>
       <img src={assets.cart_icon} alt="cart" />
-      <p>10</p>
+      <p>{getCartCount()}</p>
     </Link>
 {/*Sidebar menu for small screens*/}
     <div className='nav-menu'>

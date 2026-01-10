@@ -14,9 +14,13 @@ import './index.css';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import SearchBar from './components/SearchBar';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const App = () => {
   return (
     <div>
+      <ToastContainer />
       <NavBar />
       <SearchBar />
       

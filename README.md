@@ -43,7 +43,7 @@ Uses useContext to get products from ShopContext.
 - Implemented conditional rendering — filters are always visible on desktop, but toggle on mobile.
 - Improved understanding of window resizing and event listeners in React.
 
-### 6
+### 7
 1. I have  loaded all products from the ShopContext.
 These products contain details like name, price, category, and subCategory.
 2. I keep two arrays in state:
@@ -60,3 +60,35 @@ If any type is selected → keep only those type items
 Finally, the filtered list is saved in filterProducts.
 5. Whenever category or subCategory changes, the filter runs again.
 This is done using useEffect(() => applyFilter(), [category, subCategory]).
+
+### 8
+Added mobile-responsive CSS using @media (max-width: 767px) for better layout on small screens.
+Updated the SearchBar design to adjust spacing, padding, and icon sizes on mobile.
+Removed large margins and made the search bar full-width on mobile devices.
+Used !important to properly override desktop CSS styles on mobile.
+Updated SearchBar.jsx to show the search bar only on the Collection page.
+Used useLocation + useEffect to control when the SearchBar should be visible.
+Made the search input fully responsive by fixing width, font size, and alignment issues.
+
+### 9
+Developed Product page UI using React.
+Implemented dynamic product data fetching with Context API.
+Added image gallery with thumbnail preview.
+Implemented size selection with active state styling.
+Integrated Add to Cart functionality.
+Styled the Product page using CSS (Flexbox layout).
+Designed product image section, details, buttons, and hover effects.
+Styled description & review section for better UI.
+
+### 10
+Implemented Related Products based on category & subcategory.
+Styled Related Products section using CSS Grid.
+Added mobile responsiveness for Product & Related pages.
+Integrated Toast notifications for cart actions.
+Updated ShopContext.jsx:
+Implemented Add to Cart logic
+(same product + same size → quantity increases,
+same product + different size → new entry).
+Added size validation with error toast.
+Implemented cart count calculation.
+Displayed cart items dynamically in Cart page using Context API.
