@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { createContext } from "react";
 import { products } from "../assets/assets";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -14,6 +15,8 @@ const ShopContextProvider = (props) => {
     const [showSearch , setShowSearch] = useState(false); //search logo
     //Add to cart
     const [cartItems , setCartItems] = useState({});
+    //proceed to checkout button
+    const navigate = useNavigate();
 
 //Add to the cart-Same product + same size → quantity increases
 //Same product + different size → new size entry added
@@ -57,10 +60,42 @@ const ShopContextProvider = (props) => {
     }
     return totalCount;
  }
+ //used for to delete cartitems(bin icons) in cart.jsx
+const updateQuantity = async (itemId, size, quantity) => {
+    let cartData = structuredClone(cartItems);
+
+    if (quantity === 0) {
+        delete cartData[itemId][size];
+        if (Object.keys(cartData[itemId]).length === 0) {
+            delete cartData[itemId];
+        }
+    } else {
+        cartData[itemId][size] = quantity;
+    }
+
+    setCartItems(cartData);
+};
+//to get the cart amount of a particular items 
+const getCartAmount = () => {
+    let totalAmount = 0;
+    for (const items in cartItems){
+        let iteminfo = products.find(product => product._id === items);
+        for (const item in cartItems[items]){
+            try {
+                if(cartItems[items][item] > 0){
+                    totalAmount += iteminfo.price * cartItems[items][item];
+                }
+            } catch (error) {
+                
+            }
+    }}
+    return totalAmount;
+}
 
     const values = {
         products , currency ,delivery_cost,
-        search , setSearch , showSearch , setShowSearch ,cartItems , addToCart ,getCartCount
+        search , setSearch , showSearch , setShowSearch ,cartItems , addToCart ,getCartCount ,
+        updateQuantity , getCartAmount , navigate
     }
     return(
            <ShopContext.Provider value={values}>

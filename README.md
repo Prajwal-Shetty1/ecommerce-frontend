@@ -69,7 +69,7 @@ Used !important to properly override desktop CSS styles on mobile.
 Updated SearchBar.jsx to show the search bar only on the Collection page.
 Used useLocation + useEffect to control when the SearchBar should be visible.
 Made the search input fully responsive by fixing width, font size, and alignment issues.
-<<<<<<< HEAD
+
 
 ### 9
 Developed Product page UI using React.
@@ -93,3 +93,14 @@ same product + different size → new entry).
 Added size validation with error toast.
 Implemented cart count calculation.
 Displayed cart items dynamically in Cart page using Context API.
+
+### 11
+Built the Cart page to show products added to cart
+Added quantity update and delete (bin icon) functionality
+Fixed cart logic so items are removed properly when quantity becomes zero
+Created Cart Total section showing subtotal, delivery fee, and total amount
+Implemented checkout navigation from Cart page
+Designed Place Order page with delivery information form
+Added payment method selection (Stripe, Razorpay, Cash on Delivery)
+Highlighted the selected payment method using React state
+Improved UI using CSS layout and alignment
