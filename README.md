@@ -104,3 +104,13 @@ Designed Place Order page with delivery information form
 Added payment method selection (Stripe, Razorpay, Cash on Delivery)
 Highlighted the selected payment method using React state
 Improved UI using CSS layout and alignment
+
+### 12
+Built Orders page with product details, order status, and track button
+Implemented Login / Sign Up UI with form handling and state switching
+Completed About Us page with brand description, mission, and values
+Designed Why Choose Us section using card-based layout
+Created Contact Us page with store address, careers info, and CTA
+Added NewsletterBox integration on About and Contact pages
+Implemented mobile responsiveness for all pages using media queries
+Front-End Completed

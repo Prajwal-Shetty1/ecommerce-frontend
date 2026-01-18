@@ -2,9 +2,12 @@ import React, { useState } from 'react'
 import Title from '../components/Title';
 import CartTotal from '../components/CartTotal';
 import { assets } from '../assets/assets';
+import { useContext } from 'react';
+import { ShopContext } from '../context/ShopContext';
 
 const PlaceOrdered = () => {
   const [method , setMethod] = useState('cod');
+  const {navigate} = useContext(ShopContext);
   return (
     <>
     <div className="place-order">
@@ -50,9 +53,13 @@ const PlaceOrdered = () => {
           <p onClick={() => setMethod('cod')} className={method === 'cod' ? 'active' : ''}
             >CASH ON DELIVERY</p>
         </div>
+      <div className='place-button'>
+      <button onClick={() => navigate('/Orders')}>PLACE ORDER</button>
+    </div>
       </div>
 
     </div>
+  
     </>
   )
 }

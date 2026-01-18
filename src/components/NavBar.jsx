@@ -31,7 +31,7 @@ const NavBar = () => {
     </div>
 
     <div className='nav-profile' onClick={() => setShowDropDown(!showDropDown)}>
-      <img src={assets.profile_icon} alt="profile" />
+      <Link to="/Login"><img src={assets.profile_icon} alt="profile" /></Link>
       { showDropDown && (
         <div className='dropdown'>
            <Link to="/">MyProfile</Link>
