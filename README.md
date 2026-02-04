@@ -1,4 +1,4 @@
-# E-Commerce Platform 🛒
+# E-Commerce Platform 🛒(FrontEnd-Userpanel)
 
 This is my learning journey of building an e-commerce platform step by step.
 
