@@ -6,6 +6,15 @@ const NavBar = () => {
   const [showDropDown , setShowDropDown] = useState(false);
   const [showSidebar , setShowSidebar] = useState(false);
   const { setShowSearch , getCartCount} = useContext(ShopContext);  //serch logo
+  const {navigate,token,setToken,setCartItems} = useContext(ShopContext);
+
+  const logOut = () => {
+    setToken('');
+    setCartItems({});
+    localStorage.removeItem('token');
+    navigate('/login');
+  }
+
   return (
     <div className='navbar'>
   <Link to='/'><img src={assets.logo} alt="Logo" /></Link>
@@ -30,16 +39,25 @@ const NavBar = () => {
       <img src={assets.search_icon} alt="search" onClick={() => setShowSearch(true)}/>
     </div>
 
-    <div className='nav-profile' onClick={() => setShowDropDown(!showDropDown)}>
-      <Link to="/Login"><img src={assets.profile_icon} alt="profile" /></Link>
-      { showDropDown && (
-        <div className='dropdown'>
-           <Link to="/">MyProfile</Link>
-           <Link to="/Orders">Orders</Link>
-           <button onClick={() => alert("Logged Out!")}>LogOut</button>
-        </div>
-      )}
+    <div className="nav-profile">
+  <img src={assets.profile_icon} alt="profile" onClick={() => {
+      if (token) {
+        setShowDropDown(!showDropDown);
+      } else {
+        navigate("/login");
+      }
+    }}
+  />
+
+  {token && showDropDown && (
+    <div className="dropdown" onClick={(e) => e.stopPropagation()}>
+      <Link>MyProfile</Link>
+      <Link to="/Orders">Orders</Link>
+      <button onClick={logOut}>LogOut</button>
     </div>
+  )}
+</div>
+
 
     <Link to="/Cart" className='nav-cart'>
       <img src={assets.cart_icon} alt="cart" />

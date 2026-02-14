@@ -21,7 +21,6 @@ Stores products, currency, delivery_cost.
 Provides data to all components using React Context.
 -**LatestCollection Component**
 Uses useContext to get products from ShopContext.
-
 ### 4
 1.Created ProductItem component to show product image, name, and price.
 2.Made Title component to display headings.
@@ -29,20 +28,17 @@ Uses useContext to get products from ShopContext.
 4.Built BestSeller to show top 5 best-selling products.
 5.Used ShopContext to get product data and currency.
 6.Used React Router (Link) to go to product details page.
-
 ### 5
 - Created **OurPolicy** section with icons, headings, and descriptions for exchange, return, and support policies.
 - Built **NewsletterBox** component with a subscription form that prevents page refresh and takes email input.
 - Developed **Footer** with company info, contact details, and copyright text.
 - Styled components: added font, colors, image sizes, text alignment, list styling, and spacing.
-
 ### 6
 - Fixed mobile view sizes for OurPolicy.jsx, NewsletterBox.jsx, and Footer.jsx to look proper on small screens.
 - Created a responsive Collection page in React.
 - Learned how to use useState and useEffect to detect screen size (mobile or desktop).
 - Implemented conditional rendering — filters are always visible on desktop, but toggle on mobile.
 - Improved understanding of window resizing and event listeners in React.
-
 ### 7
 1. I have  loaded all products from the ShopContext.
 These products contain details like name, price, category, and subCategory.
@@ -60,7 +56,6 @@ If any type is selected → keep only those type items
 Finally, the filtered list is saved in filterProducts.
 5. Whenever category or subCategory changes, the filter runs again.
 This is done using useEffect(() => applyFilter(), [category, subCategory]).
-
 ### 8
 Added mobile-responsive CSS using @media (max-width: 767px) for better layout on small screens.
 Updated the SearchBar design to adjust spacing, padding, and icon sizes on mobile.
@@ -69,8 +64,6 @@ Used !important to properly override desktop CSS styles on mobile.
 Updated SearchBar.jsx to show the search bar only on the Collection page.
 Used useLocation + useEffect to control when the SearchBar should be visible.
 Made the search input fully responsive by fixing width, font size, and alignment issues.
-
-
 ### 9
 Developed Product page UI using React.
 Implemented dynamic product data fetching with Context API.
@@ -80,7 +73,6 @@ Integrated Add to Cart functionality.
 Styled the Product page using CSS (Flexbox layout).
 Designed product image section, details, buttons, and hover effects.
 Styled description & review section for better UI.
-
 ### 10
 Implemented Related Products based on category & subcategory.
 Styled Related Products section using CSS Grid.
@@ -93,7 +85,6 @@ same product + different size → new entry).
 Added size validation with error toast.
 Implemented cart count calculation.
 Displayed cart items dynamically in Cart page using Context API.
-
 ### 11
 Built the Cart page to show products added to cart
 Added quantity update and delete (bin icon) functionality
@@ -104,8 +95,7 @@ Designed Place Order page with delivery information form
 Added payment method selection (Stripe, Razorpay, Cash on Delivery)
 Highlighted the selected payment method using React state
 Improved UI using CSS layout and alignment
-
-### 12
+### 12 
 Built Orders page with product details, order status, and track button
 Implemented Login / Sign Up UI with form handling and state switching
 Completed About Us page with brand description, mission, and values
@@ -113,4 +103,3 @@ Designed Why Choose Us section using card-based layout
 Created Contact Us page with store address, careers info, and CTA
 Added NewsletterBox integration on About and Contact pages
 Implemented mobile responsiveness for all pages using media queries
-Front-End Completed

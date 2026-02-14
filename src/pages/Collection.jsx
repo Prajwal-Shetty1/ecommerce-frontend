@@ -73,7 +73,7 @@ const applyFilter = () => {
 }
 useEffect(() =>{
   applyFilter();
-},[category,subCategory,search,showSearch])
+},[category,subCategory,search,showSearch,products])
 //Now sorting the product according to Relavant,Low-High,High-Low
 const sortProduct = () => {
   let fpCopy = filterProducts.slice();

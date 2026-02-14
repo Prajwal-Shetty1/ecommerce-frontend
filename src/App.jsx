@@ -17,7 +17,23 @@ import SearchBar from './components/SearchBar';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+//entire application on refresh for login,signup
+import { useEffect, useContext } from "react";
+import { ShopContext } from "./context/ShopContext";
+
+
+
 const App = () => {
+
+ 
+  const { token, setToken } = useContext(ShopContext);
+
+  useEffect(() => {
+    if (!token && localStorage.getItem("token")) {
+      setToken(localStorage.getItem("token"));
+    }
+  }, []);
+
   return (
     <div>
       <ToastContainer />
