@@ -24,14 +24,24 @@ const ShopContextProvider = (props) => {
     //Add to the cart-Same product + same size → quantity increases
     //Same product + different size → new size entry added
     const[token,setToken] = useState('');
-
+useEffect(() => {
+  console.log("TOKEN VALUE:", token);
+}, [token]);
+useEffect(() => {
+  const savedToken = localStorage.getItem("token");
+  if (savedToken) {
+    setToken(savedToken);
+  }
+}, []);
 
     const addToCart = async (teamId, size) => {
         if (!size) {
             toast.error("Select Product Size");
             return;
         }
-        let cartData = structuredClone(cartItems);
+        console.log("TOKEN VALUE IN ADD TO CART:", token);
+
+        let cartData = structuredClone(cartItems || {});
         if (cartData[teamId]) {
             if (cartData[teamId][size]) {
                 cartData[teamId][size] += 1;
@@ -44,6 +54,16 @@ const ShopContextProvider = (props) => {
             cartData[teamId][size] = 1;
         }
         setCartItems(cartData);
+
+        //to add selected products in cart to databases
+        if (token) {
+            try {
+                await axios.post(backendUrl+'/api/cart/add',{ itemId: teamId, size},{ headers : {token}})
+            } catch (error) {
+                console.log(error);
+                toast.error(error.message);
+            }
+        }
     };
 
     useEffect(() => {
@@ -66,8 +86,10 @@ const ShopContextProvider = (props) => {
         return totalCount;
     }
     //used for to delete cartitems(bin icons) in cart.jsx
+
     const updateQuantity = async (itemId, size, quantity) => {
-        let cartData = structuredClone(cartItems);
+        let cartData = structuredClone(cartItems || {});
+
 
         if (quantity === 0) {
             delete cartData[itemId][size];
@@ -79,7 +101,33 @@ const ShopContextProvider = (props) => {
         }
 
         setCartItems(cartData);
+
+        //To update user cart in database (so if we update quantity it should be changed in database)
+        if(token){
+            try {
+                 await axios.post(backendUrl+'/api/cart/update',{ itemId,size,quantity},{ headers : {token}})
+            } catch (error) {
+                console.log(error);
+                toast.error(error.message);
+            }
+        }
     };
+    //if refresh is given cart products are removed from userpanel while it should be restored from database
+    const getUserCart = async(token) =>{
+        try {
+            const response = await axios.post(backendUrl+'/api/cart/get',{},{headers : {token}});
+            if(response.data.success){
+                setCartItems(response.data.cartData);
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error(error.message);
+        }
+    }
+    useEffect(()=> {
+        getUserCart(localStorage.getItem('token'));
+
+    },[])
     //to get the cart amount of a particular items 
     const getCartAmount = () => {
         let totalAmount = 0;
@@ -113,8 +161,9 @@ const ShopContextProvider = (props) => {
         }
     }
     useEffect(() => {
-        getProducts();
-    }, [products])
+    getProducts();
+}, []);
+
     const values = {
         products, currency, delivery_cost,
         search, setSearch, showSearch, setShowSearch, cartItems, addToCart, getCartCount,
