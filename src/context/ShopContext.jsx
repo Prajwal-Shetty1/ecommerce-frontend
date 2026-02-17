@@ -124,10 +124,12 @@ useEffect(() => {
             toast.error(error.message);
         }
     }
-    useEffect(()=> {
-        getUserCart(localStorage.getItem('token'));
+    useEffect(() => {
+  if (token) {
+    getUserCart(token);
+  }
+}, [token]);
 
-    },[])
     //to get the cart amount of a particular items 
     const getCartAmount = () => {
         let totalAmount = 0;

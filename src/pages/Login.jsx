@@ -39,12 +39,13 @@ const Login = () => {
         
          //console.log("LOGIN RESPONSE:", response.data);
         //console.log("TOKEN:", response.data.token);
-        if(response.data.success){
-          setToken(response.data.token);
-          localStorage.setItem('token',response.data.token);
-        }else{
-          toast.error(error.data.message);
-        }
+        
+  if (response.data.success) {
+    setToken(response.data.token);
+    localStorage.setItem('token', response.data.token);
+  } else {
+    toast.error(response.data.message); // ✅ FIX
+  }
       }
 
     } catch (error) {
