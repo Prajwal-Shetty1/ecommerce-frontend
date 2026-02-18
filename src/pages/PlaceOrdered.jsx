@@ -7,10 +7,55 @@ import { ShopContext } from '../context/ShopContext';
 
 const PlaceOrdered = () => {
   const [method , setMethod] = useState('cod');
-  const {navigate} = useContext(ShopContext);
+  const {navigate,backendUrl,token,cartItems, setCartItems,getCartAmount,delivery_cost,products} = useContext(ShopContext);
+//for cartproducts to ordering(by providing informations for delivery purpose)
+const[formData,setFormData] = useState({
+  firstname:'',
+  lastname:'',
+  email:'',
+  street:'',
+  city:'',
+  state:'',
+  zipcode:'',
+  country:'',
+  phone:''
+})
+const onChangeHandler = (event)=> {
+  //input field name (email, password, etc.)
+     const name = event.target.name;
+     //what user types
+     const value = event.target.value;
+     //updates that specific field in formData
+     setFormData(data => ({...data,[name]:value}))
+}
+const onSubmitHandler =async(event)=> {
+    event.preventDefault();
+    try {
+
+      let orderItems=[]
+      for (const items in cartItems){
+        for (const item in cartItems[items]){
+          if(cartItems[items][item]>0){
+            const itemInfo = structuredClone(products.find(product._id===items));
+            if(itemInfo){
+              itemInfo.size = item;
+              itemInfo.quantity = cartItems[items][item];
+              orderItems.push(itemInfo);
+            }
+          }
+        }
+      }
+      console.log(orderItems);
+      
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
+}
+
   return (
     <>
-    <div className="place-order">
+    <form className="place-order">
 
       {/* LEFT SIDE */}
       <div className="place-order-left">
@@ -18,24 +63,24 @@ const PlaceOrdered = () => {
         <Title text1={'DELIVERY'} text2={'INFORMATION_____'} />
         </div>
         <div className="two-inputs">
-          <input type="text" placeholder="First Name" />
-          <input type="text" placeholder="Last Name" />
+          <input onChange={onChangeHandler} name='firstname' value={formData.firstname} type="text" placeholder="First Name" required  />
+          <input  onChange={onChangeHandler} name='lastname' value={formData.lastname} type="text" placeholder="Last Name" required />
         </div>
 
-        <input type="email" placeholder="Email Address" />
-        <input type="text" placeholder="Street" />
+        <input onChange={onChangeHandler} name='email' value={formData.email} type="email" placeholder="Email Address" required  />
+        <input onChange={onChangeHandler} name='street' value={formData.street} type="text" placeholder="Street" required />
 
         <div className="two-inputs">
-          <input type="text" placeholder="City" />
-          <input type="text" placeholder="State" />
+          <input onChange={onChangeHandler} name='city' value={formData.city} type="text" placeholder="City" required />
+          <input onChange={onChangeHandler} name='state' value={formData.state} type="text" placeholder="State" required />
         </div>
 
         <div className="two-inputs">
-          <input type="number" placeholder="Zip Code" />
-          <input type="text" placeholder="Country" />
+          <input onChange={onChangeHandler} name='zipcode' value={formData.zipcode} type="number" placeholder="Zip Code" required />
+          <input onChange={onChangeHandler} name='country' value={formData.country} type="text" placeholder="Country" required />
         </div>
 
-        <input type="number" placeholder="Phone" />
+        <input onChange={onChangeHandler} name='phone' value={formData.phone} type="number" placeholder="Phone" required />
       </div>
 
       {/* RIGHT SIDE */}
@@ -54,11 +99,11 @@ const PlaceOrdered = () => {
             >CASH ON DELIVERY</p>
         </div>
       <div className='place-button'>
-      <button onClick={() => navigate('/Orders')}>PLACE ORDER</button>
+      <button type='submit' onSubmit={onSubmitHandler}>PLACE ORDER</button>
     </div>
       </div>
 
-    </div>
+    </form>
   
     </>
   )
