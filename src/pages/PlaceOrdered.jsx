@@ -4,6 +4,8 @@ import CartTotal from '../components/CartTotal';
 import { assets } from '../assets/assets';
 import { useContext } from 'react';
 import { ShopContext } from '../context/ShopContext';
+import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const PlaceOrdered = () => {
   const [method , setMethod] = useState('cod');
@@ -36,7 +38,7 @@ const onSubmitHandler =async(event)=> {
       for (const items in cartItems){
         for (const item in cartItems[items]){
           if(cartItems[items][item]>0){
-            const itemInfo = structuredClone(products.find(product._id===items));
+            const itemInfo = structuredClone(products.find(product => product._id === items));
             if(itemInfo){
               itemInfo.size = item;
               itemInfo.quantity = cartItems[items][item];
@@ -45,7 +47,28 @@ const onSubmitHandler =async(event)=> {
           }
         }
       }
-      console.log(orderItems);
+     // console.log(orderItems);
+     let orderData = {
+      address:formData,
+      item:orderItems,
+      amount:getCartAmount()+delivery_cost
+     }
+     //switch case for choosing payment methods and to store objects in orders Database
+     switch(method){
+      //Api called for "COD"
+      case 'cod':
+        const response = await axios.post(backendUrl+'/api/order/place',orderData,{headers:{token}})
+        console.log(response.data.successs);
+        if(response.data.success){
+          setCartItems({})
+          navigate('/Orders')
+        }else{
+          toast.error(response.data.message);
+        }
+        break;
+      default:
+        break;
+     }
       
     } catch (error) {
       console.log(error);
@@ -55,7 +78,7 @@ const onSubmitHandler =async(event)=> {
 
   return (
     <>
-    <form className="place-order">
+    <form className="place-order"  onSubmit={onSubmitHandler}>
 
       {/* LEFT SIDE */}
       <div className="place-order-left">
@@ -99,7 +122,7 @@ const onSubmitHandler =async(event)=> {
             >CASH ON DELIVERY</p>
         </div>
       <div className='place-button'>
-      <button type='submit' onSubmit={onSubmitHandler}>PLACE ORDER</button>
+      <button type='submit'>PLACE ORDER</button>
     </div>
       </div>
 

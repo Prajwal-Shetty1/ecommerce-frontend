@@ -169,7 +169,7 @@ useEffect(() => {
     const values = {
         products, currency, delivery_cost,
         search, setSearch, showSearch, setShowSearch, cartItems, addToCart, getCartCount,
-        updateQuantity, getCartAmount, navigate, backendUrl ,token , setToken
+        updateQuantity, getCartAmount, navigate, backendUrl ,token , setToken,setCartItems
     }
     return (
         <ShopContext.Provider value={values}>
