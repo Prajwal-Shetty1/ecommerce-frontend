@@ -117,9 +117,9 @@ useEffect(() => {
           {/* SubCategory filter */}
           <div className='filter-subcategories'>
             <p>TYPES</p>
-            <p><input type="checkbox" value="Topwear" onChange={subtoggleCategory}/> TopWear</p>
-            <p><input type="checkbox" value="Bottomwear" onChange={subtoggleCategory}/> BottomWear</p>
-            <p><input type="checkbox" value="Winterwear" onChange={subtoggleCategory}/> WinterWear</p>
+            <p><input type="checkbox" value="TopWear" onChange={subtoggleCategory}/> TopWear</p>
+            <p><input type="checkbox" value="BottomWear" onChange={subtoggleCategory}/> BottomWear</p>
+            <p><input type="checkbox" value="WinterWear" onChange={subtoggleCategory}/> WinterWear</p>
           </div>
         </div>
       )}
