@@ -63,14 +63,18 @@ const Orders = () => {
               <div className="orders-para">
                 <p>{item.name}</p>
                 <p>{currency} {item.price}</p>
-                <p>Quantity : 1</p>
-                <p>Size : M</p>
-                <p>Date: <span>18 January, 2026</span></p>
+                <p>Quantity : {item.quantity}</p>
+                <p>Size : {item.size}</p>
+                <p>Date: <span>{new Date(item.date).toLocaleDateString()}</span></p>
+                <p>Payment : {item.paymentMethod}</p>
               </div>
               <div className='para-orders'>
-                <p>Ready to Ship</p>
+                <div className="order-status">
+                  <span className="status-dot"></span>
+                  <p>{item.status}</p>
+                </div>
               </div>
-              <button>Track Order</button>
+              <button onClick={loadOrderData}>Track Order</button>
             </div>
           ))
         }

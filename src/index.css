@@ -1104,69 +1104,75 @@ section, .our-policy, .letter-box, .footer {
     max-width: 100%;
   }
 }
-
-/*Orders.jsx*/
-.orders-map{
-  width: 90%;
-  max-width: 1500px;
-  margin: 30px auto;
+/* Order.jsx*/
+.orders-map {
+  width: 95%;
+  max-width: 1200px;
+  margin: 20px auto;
 }
-.orders-title{
-  text-align: center;
-  margin: 30px 0;
-}
-.orders-mapping{
+.orders-mapping {
   display: grid;
-  grid-template-columns: 120px 2fr 1fr 1fr ;
+  grid-template-columns: 100px 2fr 1fr 130px;
   align-items: center;
-  gap: 20px;
-  padding: 20px;
-  margin-bottom: 15px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  gap: 25px;
+  padding: 20px 0;
+  border-bottom: 1px solid #e5e5e5;
 }
-.orders-mapping img{
-   width: 100px;
-  height: auto;
+.orders-mapping img {
+  width: 100px;
   border-radius: 6px;
 }
-.orders-para p{
-   margin: 4px 0;
-  font-size: 18px;
-  font-weight: 500;
+.orders-para p {
+  margin: 4px 0;
+  font-size: 15px;
+  color: #333;
 }
-.para-orders p{
+.orders-para p:first-child {
   font-weight: 600;
-  font-size: 18px;
-}
-.orders-mapping button{
-  padding: 10px 15px;
-  background: black;
-  color: white;
   font-size: 16px;
-  border: none;
+}
+.order-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #28a745;
+  border-radius: 50%;
+}
+.orders-mapping button {
+  padding: 8px 16px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  color: #333;
+  font-size: 14px;
+  border-radius: 4px;
   cursor: pointer;
-  width: fit-content;
-  justify-self: start;
+  transition: 0.2s ease;
 }
-
-.orders-mapping button:hover{
-  background-color: #222;
-  transform: translateY(-2px);
+.orders-mapping button:hover {
+  background: #eaeaea;
 }
-/*Mobile Responsive*/
-@media (max-width: 767px) {
+/* Mobile Responsive */
+@media (max-width: 768px) {
   .orders-mapping {
     grid-template-columns: 1fr;
+    gap: 15px;
     text-align: center;
   }
   .orders-mapping img {
-    width: 120px;
     margin: 0 auto;
   }
-  .orders-para p {
-    font-size: 16px;
+  .order-status {
+    justify-content: center;
+  }
+  .orders-mapping button {
+    margin: 0 auto;
   }
 }
 
