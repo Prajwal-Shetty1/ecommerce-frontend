@@ -20,6 +20,7 @@ import "react-toastify/dist/ReactToastify.css";
 //entire application on refresh for login,signup
 import { useEffect, useContext } from "react";
 import { ShopContext } from "./context/ShopContext";
+import Verify from './pages/Verify';
 
 
 
@@ -50,6 +51,7 @@ const App = () => {
         <Route path='/Login' element={<Login />} />
         <Route path='/Placed-Order' element={<PlaceOrdered />} />
         <Route path='/Orders' element={<Orders />} />
+        <Route path='/verify' element={<Verify />} />
       </Routes>
       <Footer />
     </div>
