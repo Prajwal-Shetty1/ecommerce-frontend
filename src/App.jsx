@@ -22,7 +22,9 @@ import { useEffect, useContext } from "react";
 import { ShopContext } from "./context/ShopContext";
 import Verify from './pages/Verify';
 
+import FashionAssistant from './pages/FashionAssistant';
 
+import StyleBotWidget from "./components/StyleBotWidget";
 
 const App = () => {
 
@@ -52,8 +54,10 @@ const App = () => {
         <Route path='/Placed-Order' element={<PlaceOrdered />} />
         <Route path='/Orders' element={<Orders />} />
         <Route path='/verify' element={<Verify />} />
+        <Route path='/fashion-assistant' element={<FashionAssistant />} />
       </Routes>
       <Footer />
+      <StyleBotWidget />
     </div>
   )
 }

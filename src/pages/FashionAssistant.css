@@ -1,0 +1,274 @@
+.stylebot {
+  max-width: 640px;
+  margin: 0 auto;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: #FBF8F3;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Header */
+.stylebot-header {
+  padding: 28px 24px 20px;
+  border-bottom: 1px solid #E5DFD3;
+  background: #FBF8F3;
+}
+
+.stylebot-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.stylebot-title {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: 0.5px;
+  color: #2B2620;
+  font-weight: 400;
+}
+
+.stylebot-badge {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #A8825F;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.stylebot-subtitle {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #7A7268;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Chat area */
+.stylebot-chat {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.stylebot-starters-label {
+  font-size: 13px;
+  color: #A8825F;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.stylebot-starters-wrap {
+  margin-top: 12px;
+}
+
+.stylebot-starters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stylebot-starter-btn {
+  text-align: left;
+  padding: 12px 16px;
+  background: #FFFFFF;
+  border: 1px solid #E5DFD3;
+  border-radius: 10px;
+  font-size: 14.5px;
+  color: #2B2620;
+  cursor: pointer;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  transition: border-color 0.15s ease;
+}
+
+.stylebot-starter-btn:hover {
+  border-color: #A8825F;
+}
+
+.stylebot-msg-row {
+  max-width: 82%;
+  display: flex;
+  flex-direction: column;
+}
+
+.stylebot-msg-row.user {
+  align-self: flex-end;
+}
+
+.stylebot-msg-row.bot {
+  align-self: flex-start;
+}
+
+.stylebot-msg-label {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #A8825F;
+  margin-bottom: 4px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.stylebot-bubble {
+  padding: 12px 16px;
+  font-size: 15px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  border-radius: 14px 14px 14px 4px;
+  background: #FFFFFF;
+  color: #2B2620;
+  border: 1px solid #E5DFD3;
+}
+
+.stylebot-bubble.user {
+  border-radius: 14px 14px 4px 14px;
+  background: #2B2620;
+  color: #FBF8F3;
+  border: none;
+}
+
+/* Typing indicator */
+.stylebot-typing {
+  padding: 12px 16px;
+  border-radius: 14px 14px 14px 4px;
+  background: #FFFFFF;
+  border: 1px solid #E5DFD3;
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.stylebot-typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #A8825F;
+  display: inline-block;
+  animation: styleBotBounce 1.2s infinite ease-in-out;
+}
+
+.stylebot-typing-dot:nth-child(1) { animation-delay: 0s; }
+.stylebot-typing-dot:nth-child(2) { animation-delay: 0.15s; }
+.stylebot-typing-dot:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes styleBotBounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
+  40% { transform: translateY(-4px); opacity: 1; }
+}
+
+/* Input area */
+.stylebot-input-area {
+  padding: 16px 24px 24px;
+  border-top: 1px solid #E5DFD3;
+  background: #FBF8F3;
+}
+
+.stylebot-error {
+  font-size: 12.5px;
+  color: #B3543E;
+  margin-bottom: 8px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.stylebot-input-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.stylebot-textarea {
+  flex: 1;
+  resize: none;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #D9D1C2;
+  font-size: 15px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  outline: none;
+  background: #FFFFFF;
+  color: #2B2620;
+}
+
+.stylebot-textarea::placeholder {
+  color: #A39A8C;
+}
+
+.stylebot-send-btn {
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  background: #2B2620;
+  color: #FBF8F3;
+  font-size: 14px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+
+.stylebot-send-btn:disabled {
+  background: #D9D1C2;
+  cursor: default;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .stylebot-header {
+    padding: 20px 16px 16px;
+  }
+
+  .stylebot-title {
+    font-size: 22px;
+  }
+
+  .stylebot-badge {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .stylebot-subtitle {
+    font-size: 13px;
+  }
+
+  .stylebot-chat {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .stylebot-msg-row {
+    max-width: 90%;
+  }
+
+  .stylebot-bubble {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+
+  .stylebot-starter-btn {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+
+  .stylebot-input-area {
+    padding: 12px 16px 16px;
+  }
+
+  .stylebot-input-row {
+    gap: 8px;
+  }
+
+  .stylebot-textarea {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+
+  .stylebot-send-btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
