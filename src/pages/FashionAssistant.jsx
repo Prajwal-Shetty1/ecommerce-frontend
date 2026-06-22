@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./FashionAssistant.css";
 
+
 const STARTERS = [
   "Suggest an outfit for a college fest",
   "What should I wear for a job interview?",
@@ -23,6 +24,8 @@ export default function FashionAssistant() {
     const userText = (text ?? message).trim();
     if (!userText || loading) return;
 
+    console.log("API URL:", import.meta.env.VITE_API_URL);
+
     const history = [...messages, { sender: "user", text: userText }];
     setMessages(history);
     setMessage("");
@@ -30,11 +33,14 @@ export default function FashionAssistant() {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:4000/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userText }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/chat`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: userText }),
+        }
+      );
 
       const data = await response.json();
 
