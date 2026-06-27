@@ -39,3 +39,11 @@ Users can browse products, add items to cart, and place orders.
 * ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=jsonwebtokens)
 * ![Cloudinary](https://img.shields.io/badge/Cloudinary-blue?style=for-the-badge&logo=cloudinary)
 * ![Gemini](https://img.shields.io/badge/Gemini_API-orange?style=for-the-badge&logo=google)
+
+  ---
+
+## 🎥 Demo
+
+[![Forever E-Commerce Demo](https://img.youtube.com/vi/z1-V24AcPjU/0.jpg)](https://youtu.be/z1-V24AcPjU)
+
+*Click the thumbnail above to watch the full demo on YouTube*
